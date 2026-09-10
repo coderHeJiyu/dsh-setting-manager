@@ -1,0 +1,4 @@
+# dsh-setting-manager：设置页分区导航显隐管理（右键勾选控制各 settings.section 分区显示/隐藏）
+- insert:
+    - id: setting-manager
+      name: dsh-setting-manager
