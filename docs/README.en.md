@@ -1,4 +1,5 @@
 # dsh-setting-manager
+[中文](../README.md) | English
 
 A DSH plugin that hides or shows settings sections. Right-click the section
 navigation on the settings page to open a check menu; click rows to toggle
@@ -6,12 +7,13 @@ sections. Hiding is purely visual (`display:none`) and does not change any
 behavior. Show/hide state is persisted to `$DSH_HOME/dsh-setting-manager.json`
 and shared across browsers.
 
-| | |
-|---|---|
 | Version | 0.1.0 |
+|---|---|
 | Form | Pure JS (`"type": "module"`); `lib/` is the source, no build step |
 | Sides | Host (loopback route) + Client (browser menu), one entry each |
-| 中文 | [README.md](../README.md) |
+
+## Preview
+![Preview](../images/preview.png)
 
 ## What it does
 
@@ -47,13 +49,13 @@ and shared across browsers.
 ## Installation
 
 ```powershell
-dsh plugin --profile web add dsh-setting-manager
+dsh plugin --profile web add github:coderHeJiyu/dsh-setting-manager
 ```
 
-Prerequisites (DSH / Node.js / pnpm), verification, from-source install
-(clone, then `add .` — no build step), updating, and uninstalling are
-covered in the [installation guide](./installation.en.md) ·
-[中文](./installation.zh.md).
+Install directly from the GitHub repository, pulling the latest commit of the
+default branch. Prerequisites (DSH / Node.js / pnpm), verification,
+from-source mount, updating, and uninstalling are covered in the
+[installation guide](./installation.en.md).
 
 ## Usage
 
@@ -137,10 +139,6 @@ dsh-setting-manager/
 ├── lib/
 │   ├── index.js      # Host: registers /api/setting-manager + state file I/O
 │   └── client.js     # Client: right-click menu, display:none applier, fetch sync, theme styles
-├── docs/
-│   ├── README.en.md        # this file
-│   ├── installation.zh.md  # installation guide
-│   └── installation.en.md  # installation guide (English)
 ├── cordis.patch.yml  # plugin registration patch (inserts id: setting-manager)
 ├── package.json
 └── .gitignore

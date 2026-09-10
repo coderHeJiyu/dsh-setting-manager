@@ -14,11 +14,14 @@
 
 ## 安装
 
-### 方式一：npm 安装（推荐）
+### 方式一：GitHub 直接安装（推荐）
 
 ```powershell
-dsh plugin --profile web add dsh-setting-manager
+dsh plugin --profile web add github:coderHeJiyu/dsh-setting-manager
 ```
+
+从 GitHub 仓库直接安装，拉取默认分支的 HEAD。插件是纯 JS、不带 `prepare`
+构建脚本，pnpm ≥10 无需 `allowBuilds` 放行。
 
 ### 方式二：源码安装（试用 / 开发）
 
@@ -31,13 +34,12 @@ dsh plugin --profile web add .
 ```
 
 纯 JS 包，`lib/` 即源码，不需要 `pnpm install` / 构建；最后一条 `add .`
-在仓库根目录执行，安装当前目录。也可以不克隆、直接从仓库安装：
+在仓库根目录执行，安装当前目录。本地开发也可以用 `link:` 软链安装
+（client 端改动热更，见 README 项目结构一节）：
 
 ```powershell
-dsh plugin --profile web add github:coderHeJiyu/dsh-setting-manager
+dsh plugin --profile web add link:/path/to/checkout
 ```
-
-该形式拉取仓库默认分支的 HEAD。
 
 ## 验证
 
@@ -61,17 +63,20 @@ dsh web --dump-config | Select-String setting-manager
 
 ## 更新
 
-- **npm 安装**：升级到最新已发布版本：
+- **GitHub 安装**：重跑安装命令，重新解析到默认分支的最新提交：
 
   ```powershell
-  dsh plugin --profile web update dsh-setting-manager
+  dsh plugin --profile web add github:coderHeJiyu/dsh-setting-manager
   ```
 
-- **源码安装**：更新仓库内容（如 `git pull`），然后在仓库根目录重新执行：
+- **源码安装**：更新仓库内容（如 `git pull`）。`add .` 拷贝安装则在仓库
+  根目录重新执行：
 
   ```powershell
   dsh plugin --profile web add .
   ```
+
+  `link:` 软链安装无需重装，重启后 Host 端生效（client 端热更）。
 
 - 更新后重启 GUI 生效。
 - 状态文件 `$DSH_HOME/dsh-setting-manager.json` 独立于插件版本，更新不会

@@ -15,11 +15,15 @@
 
 ## Installation
 
-### From npm (recommended)
+### From GitHub directly (recommended)
 
 ```powershell
-dsh plugin --profile web add dsh-setting-manager
+dsh plugin --profile web add github:coderHeJiyu/dsh-setting-manager
 ```
+
+Installs straight from the GitHub repository, pulling the HEAD of the default
+branch. The plugin is pure JS and ships no `prepare` build script, so pnpm ≥10
+needs no `allowBuilds` allowance.
 
 ### From source (trial / development)
 
@@ -34,13 +38,13 @@ dsh plugin --profile web add .
 
 The package is pure JS; `lib/` is the source, so no `pnpm install` or build
 is needed. The final `add .` runs in the repo root and installs the current
-directory. You can also skip the clone and install the repo directly:
+directory. For local development you can instead install as a `link:` symlink
+(client-side changes are hot-reloaded, see the README's project layout
+section):
 
 ```powershell
-dsh plugin --profile web add github:coderHeJiyu/dsh-setting-manager
+dsh plugin --profile web add link:/path/to/checkout
 ```
-
-This form pulls the HEAD of the repository's default branch.
 
 ## Verification
 
@@ -67,18 +71,22 @@ Check each item:
 
 ## Updating
 
-- **npm install**: upgrade to the latest published version:
+- **GitHub install**: re-run the install command, which re-resolves to the
+  latest commit of the default branch:
 
   ```powershell
-  dsh plugin --profile web update dsh-setting-manager
+  dsh plugin --profile web add github:coderHeJiyu/dsh-setting-manager
   ```
 
-- **From source**: refresh the repo (e.g. `git pull`), and re-run from the
-  repo root:
+- **From source**: refresh the repo (e.g. `git pull`). For a copy install
+  via `add .`, re-run from the repo root:
 
   ```powershell
   dsh plugin --profile web add .
   ```
+
+  A `link:` symlink install needs no re-install; restart for the host side
+  (the client side hot-reloads).
 
 - After updating, restart the GUI to apply.
 - The state file `$DSH_HOME/dsh-setting-manager.json` does not depend on the

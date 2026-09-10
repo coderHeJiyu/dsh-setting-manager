@@ -1,4 +1,5 @@
 # dsh-setting-manager
+中文 | [English](docs/README.en.md)
 
 DSH 插件：右键设置页的分区导航，弹出勾选菜单，控制各设置分区的显示与隐藏。
 隐藏是纯视觉的（`display:none`），不影响任何功能；显隐状态落盘到
@@ -8,7 +9,9 @@ DSH 插件：右键设置页的分区导航，弹出勾选菜单，控制各设�
 |---|---|
 | 形态 | 纯 JS（`"type": "module"`），`lib/` 即源码，无构建步骤 |
 | 端 | Host（loopback route）+ Client（浏览器菜单），各一个入口 |
-| 英文 | [docs/README.en.md](docs/README.en.md) |
+
+## 效果
+![预览图](docs/images/preview.png)
 
 ## 功能
 
@@ -36,8 +39,7 @@ dsh plugin --profile web add github:coderHeJiyu/dsh-setting-manager
 ```
 
 从 GitHub 仓库直接安装，拉取默认分支的最新提交。前提（DSH / Node.js /
-pnpm）、验证、本地源码挂载、更新与卸载详见 [安装指南](docs/installation.zh.md) ·
-[English](docs/installation.en.md)。
+pnpm）、验证、本地源码挂载、更新与卸载详见 [安装指南](docs/installation.zh.md)
 
 ## 使用
 
@@ -114,10 +116,6 @@ dsh-setting-manager/
 ├── lib/
 │   ├── index.js      # Host：注册 /api/setting-manager + 状态文件读写
 │   └── client.js     # Client：右键菜单、display:none 应用器、fetch 同步、主题样式
-├── docs/
-│   ├── README.en.md        # 英文版
-│   ├── installation.zh.md  # 安装指南
-│   └── installation.en.md  # 安装指南（英文）
 ├── cordis.patch.yml  # 插件注册 patch（insert id: setting-manager）
 ├── package.json
 └── .gitignore
