@@ -5,7 +5,7 @@ DSH 插件：右键设置页的分区导航，弹出勾选菜单，控制各设�
 隐藏是纯视觉的（`display:none`），不影响任何功能；显隐状态落盘到
 `$DSH_HOME/dsh-setting-manager.json`，跨浏览器共享。
 
-| 版本 | 0.1.0 |
+| 版本 | 0.1.1 |
 |---|---|
 | 形态 | 纯 JS（`"type": "module"`），`lib/` 即源码，无构建步骤 |
 | 端 | Host（loopback route）+ Client（浏览器菜单），各一个入口 |
@@ -104,10 +104,10 @@ POST body { "hidden": ["plugins"] } → 200  { "version": 1, "hidden": ["plugins
 - `@deepseek-ai/dsh-home-paths`、`@deepseek-ai/dsh-host-webserver`：DSH 自带包，
   由 profile 的 `node_modules` 提供，无需单独安装。
 - `@deepseek-ai/cordis`（`^4.0.1`）：可选 peer，由宿主提供。
-- Client 端经 `package.json` 的 `dsh.client.inject` 声明
-  `@deepseek-ai/dsh-client-runtime` 与 `@deepseek-ai/dsh-client-ui-slots`：
-  后者提供分区标签解析（语言 thunk 按当前语言求值），不可解析时回退到
-  语义等价的本地实现。
+- `package.json` 的 `dsh.client.inject` 为空：自 DSH 0.1.5 起，
+  Client 端依赖由宿主基线提供，清单不再声明。分区标签解析经
+  按当前语言求值的语言 thunk，优先取宿主基线实现，不可解析时
+  回退到语义等价的本地实现。
 
 ## 项目结构
 

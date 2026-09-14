@@ -7,7 +7,7 @@ sections. Hiding is purely visual (`display:none`) and does not change any
 behavior. Show/hide state is persisted to `$DSH_HOME/dsh-setting-manager.json`
 and shared across browsers.
 
-| Version | 0.1.0 |
+| Version | 0.1.1 |
 |---|---|
 | Form | Pure JS (`"type": "module"`); `lib/` is the source, no build step |
 | Sides | Host (loopback route) + Client (browser menu), one entry each |
@@ -126,11 +126,12 @@ registered.
   DSH packages provided by the profile's `node_modules`; no separate install
   needed.
 - `@deepseek-ai/cordis` (`^4.0.1`): optional peer, provided by the host.
-- The client side declares `@deepseek-ai/dsh-client-runtime` and
-  `@deepseek-ai/dsh-client-ui-slots` under `dsh.client.inject` in
-  `package.json`. The latter resolves section labels (language thunks are
-  evaluated in the current language); if it cannot be resolved, a local
-  implementation with identical semantics takes over.
+- `dsh.client.inject` in `package.json` is empty: since DSH 0.1.5, client-side
+  dependencies are provided by the host baseline, so the manifest no longer
+  declares them. Section labels are resolved as language thunks evaluated in
+  the current language; the host-baseline implementation is preferred, and a
+  local implementation with identical semantics takes over if it cannot be
+  resolved.
 
 ## Project layout
 
