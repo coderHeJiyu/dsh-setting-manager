@@ -1,6 +1,6 @@
 {
   "name": "dsh-setting-manager",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "DSH plugin: right-click settings section navigation with checkable menu to show/hide settings sections",
   "type": "module",
   "license": "MIT",

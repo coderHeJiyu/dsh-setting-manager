@@ -7,7 +7,7 @@ sections. Hiding is purely visual (`display:none`) and does not change any
 behavior. Show/hide state is persisted to `$DSH_HOME/dsh-setting-manager.json`
 and shared across browsers.
 
-| Version | 0.1.1 |
+| Version | 0.1.2 |
 |---|---|
 | Form | Pure JS (`"type": "module"`); `lib/` is the source, no build step |
 | Sides | Host (loopback route) + Client (browser menu), one entry each |
@@ -24,7 +24,7 @@ and shared across browsers.
   the section is visible, blank means hidden. Clicking a row toggles it at
   once. The menu stays open, so you can keep clicking; every click applies
   and persists immediately. It closes only when you click outside it or press
-  `Escape`.
+  `Escape`. Menu strings follow the DSH locale (zh/en).
 - **Show all / Hide all.** The 显示全部 / 隐藏全部 buttons at the bottom of
   the menu cover batch operations. Clicking them does not close the menu
   either.
